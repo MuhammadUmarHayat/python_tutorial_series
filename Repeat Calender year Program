@@ -1,0 +1,16 @@
+#This program tells you the next year with the same calendar.
+import calendar
+
+def next_repeating_year(year):
+    start_weekday = calendar.weekday(year, 1, 1)
+    is_leap = calendar.isleap(year)
+
+    y = year + 1
+    while True:
+        if calendar.isleap(y) == is_leap:
+            if calendar.weekday(y, 1, 1) == start_weekday:
+                return y
+        y += 1
+
+year = int(input("Enter a year: "))
+print(f"The calendar of year {year} will repeat in year {next_repeating_year(year)}")
